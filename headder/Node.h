@@ -6,25 +6,28 @@
 #define BINARYTREE_NODE_H
 
 
-#include <zconf.h>
+#include <vector>
 
 class Node {
 public:
-    Node(int key);
-    ~Node();
-    void addChild(Node* child);
+    Node(int children);
+
+    Node(int key, int children);
     int getValue();
-    void print();
-    Node* search(int value);
     int getHeight();
+
+    Node **getChildren();
+
+    void addChild(Node *child, int pos);
     void rotateRight();
 
 private:
     int key;
-    Node *leftChild;
-    Node *rightChild;
+    Node **children;
     int leftHeight = 0;
     int rightHeight = 0;
+
+    void setChildrenSize(int size);
 };
 
 

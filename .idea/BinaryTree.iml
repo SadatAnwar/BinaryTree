@@ -5,8 +5,8 @@
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/Node.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/headder/Node.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/source/Tree.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/headder/Tree.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/BinaryTree.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/headder/BinaryTree.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/main.cpp" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />

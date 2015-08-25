@@ -8,12 +8,17 @@
 
 #include "Node.h"
 
-class Tree {
+#define CHILD_NODES 2
+
+class BinaryTree {
 public:
-    Tree();
-    ~Tree() ;
-    void insert(Node* node);
-    void insert(int key);
+    BinaryTree();
+
+    ~BinaryTree();
+
+    void insert(Node *node, int value);
+
+    void insert(int value);
     void print();
     Node* search(int key);
     int getDepth ();
@@ -21,6 +26,7 @@ public:
 private:
     Node* root;
 
+    void print(Node *node);
 };
 
 
