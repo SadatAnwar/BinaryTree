@@ -2,21 +2,19 @@
 // Created by Syed Sadat Anwar on 24/08/2015.
 //
 
-#ifndef BINARYTREE_TREE_H
-#define BINARYTREE_TREE_H
+#ifndef BINARYTREE_BINARYTREE_H
+#define BINARYTREE_BINARYTREE_H
 
 
 #include "Node.h"
+#include "Tree.h"
 
 #define CHILD_NODES 2
 
-class BinaryTree {
+class BinaryTree : public Tree {
 public:
     BinaryTree();
-
     ~BinaryTree();
-
-    void insert(Node *node, int value);
 
     void insert(int value);
     void print();
@@ -26,6 +24,7 @@ public:
 private:
     Node* root;
 
+    void insert(Node *node, int value);
     void print(Node *node);
 };
 
