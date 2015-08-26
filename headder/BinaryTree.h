@@ -17,15 +17,20 @@ public:
     ~BinaryTree();
 
     void insert(int value);
-    void print();
+
+    void insert(Node *value);
+
+    void printIncreasing();
     Node* search(int key);
     int getDepth ();
 
 private:
     Node* root;
 
-    void insert(Node *node, int value);
+    void insert(Node *parent, Node *childNode);
     void print(Node *node);
+
+    Node *search(Node *pNode, int i);
 };
 
 

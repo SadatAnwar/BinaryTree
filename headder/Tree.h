@@ -13,9 +13,11 @@ class Tree {
 public:
     virtual void insert(int key) = 0;
 
+    virtual void insert(Node *key) = 0;
+
     virtual Node *search(int key) = 0;
 
-    virtual void print() = 0;
+    virtual void printIncreasing() = 0;
 };
 
 
