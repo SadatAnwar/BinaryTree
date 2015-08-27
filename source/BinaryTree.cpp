@@ -62,7 +62,6 @@ void BinaryTree::insert(int value) {
 }
 
 void BinaryTree::insert(Node *newNode) {
-
     if (root == nullptr) {
         this->root = newNode;
     } else {
@@ -70,13 +69,18 @@ void BinaryTree::insert(Node *newNode) {
     }
 }
 
-
+/*
+ * Print the tree in increasing order
+ */
 void BinaryTree::printIncreasing() {
     if (root != nullptr) {
         printInc(root);
     }
 }
 
+/*
+ * Private function to help with the printing
+ */
 void BinaryTree::printInc(Node *node) {
     if (node->getChildren()[0] != nullptr) {
         printInc(node->getChildren()[0]);
@@ -87,12 +91,19 @@ void BinaryTree::printInc(Node *node) {
     }
 }
 
+
+/*
+ * print the tree in Decreasing order
+ */
 void BinaryTree::printDecreasing() {
     if (root != nullptr) {
         printDec(root);
     }
 }
 
+/*
+ * Private function to assist in the printing
+ */
 void BinaryTree::printDec(Node *node) {
     if (node->getChildren()[1] != nullptr) {
         printDec(node->getChildren()[1]);
