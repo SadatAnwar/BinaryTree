@@ -13,26 +13,32 @@ public:
     Node(int children);
 
     Node(int key, int children);
-    int getValue();
-    int getHeight();
 
-    Node **getChildren();
+    int getValue() {
+        return key;
+    };
+
+    int getHeight() {
+        return height;
+    };
+
+    Node **getChildren() {
+        return children;
+    };
 
     void addChild(Node *child, int pos);
-    void rotateRight();
 
-private:
-    int key;
-    Node **children;
-public:
     void setHeight(int height) {
         Node::height = height;
     }
 
+
 private:
+    int key;
+
+    Node **children;
+
     int height = 0;
-    int leftHeight = 0;
-    int rightHeight = 0;
 
     void setChildrenSize(int size);
 };

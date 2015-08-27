@@ -159,8 +159,3 @@ Node *BinaryTree::search(Node *pNode, int key) {
     return nullptr;
 }
 
-
-int BinaryTree::getDepth() {
-    return this->root->getHeight();
-}
-

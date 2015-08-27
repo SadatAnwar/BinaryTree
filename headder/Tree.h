@@ -14,6 +14,8 @@ public:
 
     virtual void insert(Node *key) = 0;
 
+    virtual void insert(Node *parent, Node *child) = 0;
+
     virtual Node *search(int key) = 0;
 
     virtual void printIncreasing() = 0;

@@ -14,7 +14,8 @@
 class BinaryTree : public Tree {
 public:
     BinaryTree();
-    ~BinaryTree();
+
+    virtual ~BinaryTree();
 
     void insert(int value);
 
@@ -26,18 +27,30 @@ public:
 
     Node* search(int key);
 
-    int getDepth ();
+    int getDepth() const {
+        return this->root->getHeight();
+    };
 
-private:
+    Node *getRoot() const {
+        return root;
+    }
+
+    void setRoot(Node *root) {
+        BinaryTree::root = root;
+    }
+
+protected:
     Node* root;
-
-    void insert(Node *parent, Node *childNode);
 
     void printInc(Node *node);
 
     Node *search(Node *pNode, int i);
 
     void printDec(Node *node);
+
+private:
+    void insert(Node *parent, Node *childNode);
+
 };
 
 

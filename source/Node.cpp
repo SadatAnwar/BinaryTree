@@ -25,29 +25,6 @@ Node::Node(int value, int children) {
     key = value;
 }
 
-
-int Node::getValue() {
-    return this->key;
-}
-
-
-int Node::getHeight() {
-    return height;
-}
-
-/*
- * THe rotate function is supposed to rotate the child nodes,
- * so for the rotate right:
- *  If there exists a left child,
- */
-void Node::rotateRight() {
-
-}
-
-Node **Node::getChildren() {
-    return children;
-}
-
 /*
  * Insert a child at a specific position in the list of children
  */
