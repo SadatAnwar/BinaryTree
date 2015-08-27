@@ -32,11 +32,7 @@ int Node::getValue() {
 
 
 int Node::getHeight() {
-    if(this->leftHeight>this->rightHeight){
-        return this->leftHeight;
-    } else{
-        return this->rightHeight;
-    }
+    return height;
 }
 
 /*
@@ -56,6 +52,9 @@ Node **Node::getChildren() {
  * Insert a child at a specific position in the list of children
  */
 void Node::addChild(Node *child, int pos) {
+    int newHeight = child->getHeight() + 1;
+    if (height < newHeight) {
+        height = newHeight;
+    }
     children[pos] = child;
-
 }

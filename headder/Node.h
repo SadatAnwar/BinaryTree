@@ -24,6 +24,13 @@ public:
 private:
     int key;
     Node **children;
+public:
+    void setHeight(int height) {
+        Node::height = height;
+    }
+
+private:
+    int height = 0;
     int leftHeight = 0;
     int rightHeight = 0;
 

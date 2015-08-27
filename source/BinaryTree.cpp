@@ -26,8 +26,14 @@ void BinaryTree::insert(Node *parent, Node *childNode) {
             parent->addChild(childNode, 1);
             return;
         } else {
-            //insert new node into child0
+            //insert new node into child1 and update the height of the parent
             insert(parent->getChildren()[1], childNode);
+            int childHeight = parent->getChildren()[1]->getHeight();
+            if (parent->getHeight() < childHeight + 1) {
+                //if the children's height is equal/greater to the parent's height
+                // set the parents height to one greater than that of child
+                parent->setHeight(childHeight + 1);
+            }
         }
     } else {
         if (parent->getChildren()[0] == nullptr) {
@@ -35,6 +41,12 @@ void BinaryTree::insert(Node *parent, Node *childNode) {
             return;
         } else {
             insert(parent->getChildren()[0], childNode);
+            int childHeight = parent->getChildren()[0]->getHeight();
+            if (parent->getHeight() < childHeight + 1) {
+                //if the children's height is equal/greater to the parent's height
+                // set the parents height to one greater than that of child
+                parent->setHeight(childHeight + 1);
+            }
         }
     }
 
@@ -89,17 +101,7 @@ Node *BinaryTree::search(int key) {
         return nullptr;
     }
     else {
-        if (root->getValue() == key) {
-            return root;
-        }
-        else {
-            if (root->getValue() < key) {
-                return search(root->getChildren()[1], key);
-            }
-            else {
-                return search(root->getChildren()[0], key);
-            }
-        }
+        search(root, key);
     }
 }
 

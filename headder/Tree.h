@@ -9,7 +9,6 @@
 #include "Node.h"
 
 class Tree {
-    Node *root = nullptr;
 public:
     virtual void insert(int key) = 0;
 
