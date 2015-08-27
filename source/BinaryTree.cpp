@@ -110,17 +110,26 @@ Node *BinaryTree::search(int key) {
  */
 Node *BinaryTree::search(Node *pNode, int key) {
     if (pNode->getValue() == key) {
-        std::cout << "FOUND" << std::endl;
+        std::cout << key << " FOUND" << std::endl;
         std::cout << "Height of Node " << pNode->getHeight() << std::endl;
         return pNode;
     }
     else {
         if (pNode->getValue() < key) {
-            search(pNode->getChildren()[1], key);
+            if (pNode->getChildren()[1] != nullptr) {
+                search(pNode->getChildren()[1], key);
+            } else {
+                std::cout << key << " NOT FOUND" << std::endl;
+            }
         } else {
-            search(pNode->getChildren()[0], key);
+            if (pNode->getChildren()[0] != nullptr) {
+                search(pNode->getChildren()[0], key);
+            } else {
+                std::cout << key << " NOT FOUND" << std::endl;
+            }
         }
     }
+    return nullptr;
 }
 
 
