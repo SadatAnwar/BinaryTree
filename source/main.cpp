@@ -11,9 +11,9 @@ int main() {
         int number = rand() % 80 +1;
         binaryTree->insert(number);
     }
+    printf("Time taken for insert: %.5fs\n", (double) (clock() - insertStart) / CLOCKS_PER_SEC);
     binaryTree->search(78);
     binaryTree->printDecreasing();
-    printf("Time taken for insert: %.5fs\n", (double)(clock() - insertStart)/CLOCKS_PER_SEC);
 
     printf("Total time taken: %.5fs\n", (double)(clock() - insertStart)/CLOCKS_PER_SEC);
     return 0;
