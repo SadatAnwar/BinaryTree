@@ -73,17 +73,33 @@ void BinaryTree::insert(Node *newNode) {
 
 void BinaryTree::printIncreasing() {
     if (root != nullptr) {
-        print(root);
+        printInc(root);
     }
 }
 
-void BinaryTree::print(Node *node) {
+void BinaryTree::printInc(Node *node) {
     if (node->getChildren()[0] != nullptr) {
-        print(node->getChildren()[0]);
+        printInc(node->getChildren()[0]);
     }
     std::cout << node->getValue() << std::endl;
     if (node->getChildren()[1] != nullptr) {
-        print(node->getChildren()[1]);
+        printInc(node->getChildren()[1]);
+    }
+}
+
+void BinaryTree::printDecreasing() {
+    if (root != nullptr) {
+        printDec(root);
+    }
+}
+
+void BinaryTree::printDec(Node *node) {
+    if (node->getChildren()[1] != nullptr) {
+        printDec(node->getChildren()[1]);
+    }
+    std::cout << node->getValue() << std::endl;
+    if (node->getChildren()[0] != nullptr) {
+        printDec(node->getChildren()[0]);
     }
 }
 

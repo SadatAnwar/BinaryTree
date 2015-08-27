@@ -21,16 +21,23 @@ public:
     void insert(Node *value);
 
     void printIncreasing();
+
+    void printDecreasing();
+
     Node* search(int key);
+
     int getDepth ();
 
 private:
     Node* root;
 
     void insert(Node *parent, Node *childNode);
-    void print(Node *node);
+
+    void printInc(Node *node);
 
     Node *search(Node *pNode, int i);
+
+    void printDec(Node *node);
 };
 
 

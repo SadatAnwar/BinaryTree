@@ -17,6 +17,8 @@ public:
     virtual Node *search(int key) = 0;
 
     virtual void printIncreasing() = 0;
+
+    virtual void printDecreasing() = 0;
 };
 
 

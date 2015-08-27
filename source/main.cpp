@@ -12,7 +12,7 @@ int main() {
         binaryTree->insert(number);
     }
     binaryTree->search(78);
-    binaryTree->printIncreasing();
+    binaryTree->printDecreasing();
     printf("Time taken for insert: %.5fs\n", (double)(clock() - insertStart)/CLOCKS_PER_SEC);
 
     printf("Total time taken: %.5fs\n", (double)(clock() - insertStart)/CLOCKS_PER_SEC);
