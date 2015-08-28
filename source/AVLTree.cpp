@@ -6,13 +6,6 @@
 #include <iostream>
 #include "../headder/AVLTree.h"
 
-/*
- * Default constructor, here we take all reference from the parent and give it to the child
- */
-AVLTree::AVLTree() {
-
-}
-
 
 /*
  * The insert function is similar to the insert in a Binary Tree only here we check for balancing
@@ -27,19 +20,19 @@ void AVLTree::insert(Node *parent, Node *childNode) {
         } else {
             //insert new node into child1 and update the height of the parent
             insert(parent->getChildren()[1], childNode);
-            int childHeight1 = parent->getChildren()[1]->getHeight();
-            int childHeight0 = 0;
+            int rightChild = parent->getChildren()[1]->getHeight();
+            int leftChild = 0;
             if (parent->getChildren()[0] != nullptr) {
-                childHeight0 = parent->getChildren()[0]->getHeight();
+                leftChild = parent->getChildren()[0]->getHeight();
             }
-            int childHeightDiff = abs(childHeight0 - childHeight1);
+            int childHeightDiff = abs(leftChild - rightChild);
             if (childHeightDiff > 1) {
-                std::cout << parent->getValue() << "Rotate Children" << std::endl;
+                std::cout << parent->getValue() << " Rotate Children" << std::endl;
             }
-            if (parent->getHeight() < childHeight1 + 1) {
+            if (parent->getHeight() < rightChild + 1) {
                 //if the children's height is equal/greater to the parent's height
                 // set the parents height to one greater than that of child
-                parent->setHeight(childHeight1 + 1);
+                parent->setHeight(rightChild + 1);
             }
 
         }
@@ -49,25 +42,37 @@ void AVLTree::insert(Node *parent, Node *childNode) {
             return;
         } else {
             insert(parent->getChildren()[0], childNode);
-            int childHeight0 = parent->getChildren()[0]->getHeight();
-            int childHeight1 = 0;
+            int leftChild = parent->getChildren()[0]->getHeight();
+            int rightChild = 0;
             if (parent->getChildren()[1] != nullptr) {
-                childHeight1 = parent->getChildren()[1]->getHeight();
+                rightChild = parent->getChildren()[1]->getHeight();
             }
-            int childHeightDiff = abs(childHeight0 - childHeight1);
+            int childHeightDiff = abs(leftChild - rightChild);
+
             if (childHeightDiff > 1) {
-                std::cout << parent->getValue() << " Rotate Children" << std::endl;
+                std::cout << parent->getValue() << "Rotate Children" << std::endl;
+                if (leftChild > rightChild) {
+                    // Rotate Right-Right
+                    // We first check if we do a rotate right-right or a rotate right-left
+                    if (childNode->getValue() < parent->getChildren()[0]->getValue()) {
+                        // This is a rotate right-right case
+                        parent = rotateRight(parent);
+                    }
+                }
             }
-            if (parent->getHeight() < childHeight0 + 1) {
+            if (parent->getHeight() < leftChild + 1) {
                 //if the children's height is equal/greater to the parent's height
                 // set the parents height to one greater than that of child
-                parent->setHeight(childHeight0 + 1);
+                parent->setHeight(leftChild + 1);
             }
         }
     }
 
 }
 
+/*
+ * public insert function
+ */
 void AVLTree::insert(int value) {
     if (root == nullptr) {
         root = new Node(value, CHILD_NODES);
@@ -77,3 +82,31 @@ void AVLTree::insert(int value) {
     }
 }
 
+
+/*
+ * Thins function performs a rotate right for pNode
+ * assuming our tree looks like this:
+ *
+ *              X                                L1
+ *            /   \                            /    \
+ *           L1    R1  Rotate Right          L2      X
+ *          /  \       ------------>        /  \   /   \
+ *         L2   A                          L4  L5 A    R1
+ *        /  \
+ *       L4   L5
+ *
+ */
+Node * AVLTree::rotateRight(Node *pNode) {
+    Node *l1 = pNode->getChildren()[0];
+    Node *a = l1->getChildren()[1];
+    Node *x1 = new Node(pNode->getValue(), CHILD_NODES);
+    Node *r1 = pNode->getChildren()[1];
+    if (a != nullptr) {
+        x1->addChild(a, 0);
+    }
+    if (r1 != nullptr) {
+        x1->addChild(r1, 0);
+    }
+    l1->addChild(x1, 1);
+    return l1;
+}

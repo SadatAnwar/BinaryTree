@@ -24,10 +24,9 @@ private:
     void insert(Node *parent, Node *child);
 
 public:
-    AVLTree();
-
     void insert(int key);
 
+    Node * rotateRight(Node *pNode);
 };
 
 

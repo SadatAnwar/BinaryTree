@@ -25,7 +25,9 @@ public:
 
     void printDecreasing();
 
-    Node* search(int key);
+    void printAsTree();
+
+    Node *search(int key);
 
     int getDepth() const {
         return this->root->getHeight();
@@ -40,7 +42,7 @@ public:
     }
 
 protected:
-    Node* root;
+    Node *root;
 
     void printInc(Node *node);
 
@@ -51,6 +53,7 @@ protected:
 private:
     void insert(Node *parent, Node *childNode);
 
+    void printAsTreeLeft(Node *node);
 };
 
 

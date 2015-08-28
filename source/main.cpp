@@ -1,7 +1,4 @@
 #include <iostream>
-#include <stdlib.h>
-#include <time.h>
-#include <stdio.h>
 #include "../headder/BinaryTree.h"
 #include "../headder/AVLTree.h"
 
@@ -22,13 +19,13 @@ int main() {
     printf("Total time taken: %.5fs\n", (double)(clock() - insertStart)/CLOCKS_PER_SEC);
 
     AVLTree *avlTree = new AVLTree();
-    avlTree->insert(1);
-    avlTree->insert(2);
-    avlTree->insert(3);
+    avlTree->insert(8);
+    avlTree->insert(7);
+    avlTree->insert(6);
+    avlTree->insert(5);
     avlTree->insert(4);
-    avlTree->search(3);
     avlTree->printIncreasing();
-
+    avlTree->printDecreasing();
     return 0;
 
 }
