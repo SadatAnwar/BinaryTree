@@ -1,4 +1,7 @@
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
+#include <stdio.h>
 #include "../headder/BinaryTree.h"
 #include "../headder/AVLTree.h"
 
