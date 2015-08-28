@@ -5,6 +5,7 @@
 #include "../headder/Node.h"
 
 Node::Node(int size) {
+    numChildren = size;
     children = new Node *[size];
     //set all child nodes to null pointer
     for (int i = 0; i < size; i++) {
@@ -14,7 +15,7 @@ Node::Node(int size) {
 
 void Node::setChildrenSize(int size) {
     children = new Node *[size];
-
+    numChildren = size;
     for (int i = 0; i < size; i++) {
         children[i] = nullptr;
     }
@@ -34,4 +35,15 @@ void Node::addChild(Node *child, int pos) {
         height = newHeight;
     }
     children[pos] = child;
+}
+
+void Node::updateHeight() {
+    height = 0;
+    for (int i = 0; i < numChildren; i++) {
+        if (children[i] != nullptr) {
+            if (children[i]->getHeight() + 1 > height) {
+                height = children[i]->getHeight() + 1;
+            }
+        }
+    }
 }

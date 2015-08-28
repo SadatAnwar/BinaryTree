@@ -51,7 +51,7 @@ protected:
     void printDec(Node *node);
 
 private:
-    void insert(Node *parent, Node *childNode);
+    Node *insert(Node *parent, Node *childNode);
 
     void printAsTreeLeft(Node *node);
 };

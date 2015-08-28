@@ -18,13 +18,13 @@ BinaryTree::BinaryTree() {
  *  if not, it inserts it at children[0]
  *
  */
-void BinaryTree::insert(Node *parent, Node *childNode) {
+Node *BinaryTree::insert(Node *parent, Node *childNode) {
     if (parent->getValue() < childNode->getValue()) {
         // if the new value is greater than the value of current node
         if (parent->getChildren()[1] == nullptr) {
             //if there exists no child0 create a new node and add it as child 0
             parent->addChild(childNode, 1);
-            return;
+            return parent;
         } else {
             //insert new node into child1 and update the height of the parent
             insert(parent->getChildren()[1], childNode);
@@ -38,7 +38,7 @@ void BinaryTree::insert(Node *parent, Node *childNode) {
     } else {
         if (parent->getChildren()[0] == nullptr) {
             parent->addChild(childNode, 0);
-            return;
+            return parent;
         } else {
             insert(parent->getChildren()[0], childNode);
             int childHeight = parent->getChildren()[0]->getHeight();
@@ -49,7 +49,7 @@ void BinaryTree::insert(Node *parent, Node *childNode) {
             }
         }
     }
-
+    return parent;
 }
 
 void BinaryTree::insert(int value) {
@@ -57,7 +57,7 @@ void BinaryTree::insert(int value) {
         this->root = new Node(value, CHILD_NODES);
     } else {
         Node *newChild = new Node(value, CHILD_NODES);
-        insert(root, newChild);
+        root = insert(root, newChild);
     }
 }
 
@@ -128,7 +128,7 @@ Node *BinaryTree::search(int key) {
         return nullptr;
     }
     else {
-        search(root, key);
+        return search(root, key);
     }
 }
 
@@ -144,18 +144,18 @@ Node *BinaryTree::search(Node *pNode, int key) {
     else {
         if (pNode->getValue() < key) {
             if (pNode->getChildren()[1] != nullptr) {
-                search(pNode->getChildren()[1], key);
+                return search(pNode->getChildren()[1], key);
             } else {
                 std::cout << key << " NOT FOUND" << std::endl;
+                return nullptr;
             }
         } else {
             if (pNode->getChildren()[0] != nullptr) {
-                search(pNode->getChildren()[0], key);
+                return search(pNode->getChildren()[0], key);
             } else {
                 std::cout << key << " NOT FOUND" << std::endl;
+                return nullptr;
             }
         }
     }
-    return nullptr;
 }
-

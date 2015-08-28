@@ -21,12 +21,18 @@
  */
 class AVLTree : public BinaryTree {
 private:
-    void insert(Node *parent, Node *child);
+    Node * insert(Node *parent, Node *child);
 
 public:
     void insert(int key);
 
     Node * rotateRight(Node *pNode);
+
+    Node *rotateRightLeft(Node *pNode);
+
+    Node *rotateLeftRight(Node *pNode);
+
+    Node *rotateLeft(Node *pNode);
 };
 
 

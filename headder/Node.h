@@ -22,6 +22,9 @@ public:
         return height;
     };
 
+    void updateHeight();
+
+
     Node **getChildren() {
         return children;
     };
@@ -39,6 +42,8 @@ private:
     Node **children;
 
     int height = 0;
+
+    int numChildren = 0;
 
     void setChildrenSize(int size);
 };

@@ -7,25 +7,25 @@ using namespace std;
 int main() {
     srand((unsigned int) time(NULL));
     BinaryTree *binaryTree = new BinaryTree();
-    clock_t insertStart = clock();
-    for (int i = 0; i<200; i++){
+    clock_t insertBinStart = clock();
+    for (int i = 0; i < 50000; i++) {
         int number = rand() % 80 +1;
         binaryTree->insert(number);
     }
-    printf("Time taken for insert: %.5fs\n", (double) (clock() - insertStart) / CLOCKS_PER_SEC);
-    binaryTree->search(78);
-    //binaryTree->printDecreasing();
-
-    printf("Total time taken: %.5fs\n", (double)(clock() - insertStart)/CLOCKS_PER_SEC);
-
+    printf("Time taken for insert in Binary: %.5fms\n", (double) (clock() - insertBinStart) * 1000 / CLOCKS_PER_SEC);
+    cout << "Depth of BinaryTree: " << binaryTree->getDepth() << endl;
+    cout << "Bin Tree root at:  " << binaryTree->getRoot()->getValue() << endl;
     AVLTree *avlTree = new AVLTree();
-    avlTree->insert(8);
-    avlTree->insert(7);
-    avlTree->insert(6);
-    avlTree->insert(5);
-    avlTree->insert(4);
-    avlTree->printIncreasing();
-    avlTree->printDecreasing();
+    clock_t insertAVLStart = clock();
+    for (int i = 0; i < 100000; i++) {
+        int number = rand() % 80 + 1;
+        avlTree->insert(number);
+    }
+
+    printf("Time taken for insert in AVLTree: %.5fms\n", (double) (clock() - insertAVLStart) * 1000 / CLOCKS_PER_SEC);
+    cout << "Depth of AVLtree: " << avlTree->getDepth() << endl;
+    printf("Total time taken: %.5fs\n", (double) (clock() - insertBinStart) / CLOCKS_PER_SEC);
+    cout << "AVL Tree root at:  " << avlTree->getRoot()->getValue() << endl;
     return 0;
 
 }
